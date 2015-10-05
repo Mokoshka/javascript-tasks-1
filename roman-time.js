@@ -89,10 +89,10 @@ function graphic(str){
     return result;
 }
 
-if ((hours >= 0) && (hours < 25) && (minuts >= 0) && (minuts < 60)) {
+if ((hours >= 0) && (hours < 25) && (minutes >= 0) && (minutes < 60)) {
 
     //Перевод в римскую систему счисления
-    var rimClock = arabToRim(hours) + ":" + arabToRim(minuts);
+    var rimClock = arabToRim(hours) + ":" + arabToRim(minutes);
     console.log(rimClock);
 
     //ASCII графика
