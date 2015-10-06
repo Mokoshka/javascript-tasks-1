@@ -21,6 +21,7 @@ function toRimSimbol(arabSimbol){
         case(30): return "XXX";
         case(40): return "XL";
         case(50): return "L";
+        default: return "";
     }
 }
 
