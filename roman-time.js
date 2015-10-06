@@ -1,52 +1,49 @@
+
 var hours = process.argv[2];
 var minutes = process.argv[3];
 
-var arabs = [50, 10, 9, 5, 4, 3, 2, 1];
-
 function toRimSimbol(arabSimbol){
+/**
+ * По числу возвращает соответсвующую римскую цифру
+ */
     switch (arabSimbol) {
         case(1): return "I";
-            break;
         case(2): return "II";
-            break;
         case(3): return "III";
-            break;
         case(4): return "IV";
-            break;
         case(5): return "V";
-            break;
         case(9): return "IX";
-            break;
         case(10): return "X";
-            break;
+        case(20): return "XX";
+        case(30): return "XXX";
+        case(40): return "XL";
         case(50): return "L";
-            break;
     }
 }
 
 function arabToRim(number) {
-    if (number != 0) {
-        var ostatok = number;
-        var kol = 0;
-        var result = "";
-        var i = 0;
-        while (ostatok != 0) {
-            kol = Math.floor(ostatok / arabs[i]);
-            ostatok = ostatok % arabs[i];
-            for (var j = 0; j < kol; j++) {
-                result += toRimSimbol(arabs[i]);
-            }
-            i += 1;
-        }
-        return result;
-    } else {
+    /**
+     * Переводит десятичное число в римскую систему счисления
+      */
+    if (number == 0) {
         return "--";
     }
+    var des;
+    var edin;
+
+    edin = number % 10;
+    des = number - number % 10;
+    return toRimSimbol(des) + toRimSimbol(edin);
+
 }
 
 function graphic(str){
+    /**
+     * Возвращает графическое представление строки
+     */
     var result = [];
-    for (var i=0; i<str.length; i++){
+    var len = str.length;
+    for (var i=0; i<len; i++){
         switch (str[i]){
             case('I'): result.push(["(_)",
                                     "(_)",
@@ -98,9 +95,11 @@ if ((hours >= 0) && (hours < 25) && (minutes >= 0) && (minutes < 60)) {
     //ASCII графика
     var mas = graphic(rimClock);
     var stroka;
-    for (var k = 0; k < 5; k++) {
+    var len = mas.length;
+    var kolStr = mas[0].length;
+    for (var k = 0; k < kolStr; k++) {
         stroka = '';
-        for (var i = 0; i < mas.length; i++) {
+        for (var i = 0; i < len; i++) {
             stroka = stroka + mas[i][k] + " ";
         }
         console.log(stroka);
